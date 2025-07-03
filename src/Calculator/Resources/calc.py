@@ -26,6 +26,11 @@ a = 10.0 ** -18 # atto
 z = 10.0 ** -21 # zetto
 y = 10.0 ** -24 # yocto
 
+kib = 2 ** 10
+Mib = 2 ** 20
+Gib = 2 ** 30
+Tib = 2 ** 40
+
 
 def sqrt(x):
     if type(x) is complex:
@@ -236,7 +241,7 @@ def gtd(x):
 
 def find_prefix(x,f):
     for i in range(1,len(x)):
-        if (x[i] == f) and (x[i-1].isdigit()):
+        if (x[i:i+len(f)] == f) and (x[i-1].isdigit()):
             return i
     return None
 
@@ -247,36 +252,13 @@ def find_coef(x,n):
     return 0
 
 def wrap_to_braces(x):
-    for p in ['Y','Z','E','P','T','G','M','k','m','u','n','p','f','a','z','y','J']:
+    for p in ['kib','Mib','Gib','Tib','pi','e','J','Y','Z','E','P','T','G','M','k','m','u','n','p','f','a','z','y']:
         pos = find_prefix(x,p)
         while pos != None:
             st = find_coef(x,pos)
-            x = x[:st]+'('+x[st:pos]+'*'+x[pos]+')'+x[pos+1:]
+            x = x[:st]+'('+x[st:pos]+'*'+p+')'+x[pos+len(p):]
             pos = find_prefix(x,p)
     return x
-    
-    result = ''
-    _prefixes = []
-    _prefix = 0
-    if abs(x) < 1.0:
-        _prefixes = ['m','u','n','p','f','a','z','y']
-        while abs(x) < 1.0:
-            x *= 1000.0
-            _prefix += 1
-    elif abs(x) > 999.0:
-        _prefixes = ['k','M','G','T','P','E','Z','Y']
-        while abs(x) > 999.0:
-            x /= 1000.0
-            _prefix += 1
-    result = str(x)
-    if _prefix > 0:
-        p = _prefixes[_prefix-1]
-        if result.find('.') != -1:
-            result = result.replace('.',p)
-            result = result.rstrip('0')
-        else:
-            result += p
-    return result
     
 def calculate(expression):
     global h

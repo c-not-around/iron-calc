@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
@@ -10,6 +11,10 @@ namespace Calculator
 {
     public partial class MainForm : Form
     {
+        #region Consts
+        private const string LOG_FILE = "ic-history.log";
+        #endregion
+
         #region Fields
         private dynamic       _Calculate;
         private RadioButton[] _SvSwitch;
@@ -18,9 +23,11 @@ namespace Calculator
         private ulong         _Mask      = 0xFFFFFFFF;
         private ulong         _Operand   = 0;
         private string        _Operation = "";
+        private List<string>  _History;
+        private int           _HistoryIndex;
         #endregion
 
-        #region Form
+        #region Ctors
         public MainForm()
         {
             InitializeComponent();
@@ -43,7 +50,7 @@ namespace Calculator
                 ScriptEngine Script = Python.CreateEngine();
                 ScriptScope  Scope  = Script.CreateScope();
                 Script.ExecuteFile("calc.py", Scope);
-                _Calculate = Scope.GetVariable("calculate");
+                _Calculate          = Scope.GetVariable("calculate");
             }
             else
             {
@@ -57,7 +64,20 @@ namespace Calculator
                     MessageBoxButtons.OK, 
                     MessageBoxIcon.Error
                 );
+
                 Application.Exit();
+            }
+
+            if (File.Exists(LOG_FILE))
+            {
+                string[] lines = File.ReadAllLines(LOG_FILE);
+                _History       = new List<string>(lines);
+                _HistoryIndex  = _History.Count;
+            }
+            else
+            {
+                _History      = new List<string>();
+                _HistoryIndex = -1;
             }
         }
         #endregion
@@ -94,6 +114,10 @@ namespace Calculator
             }
             else
             {
+                _History.Add(BottomLine.Text);
+                File.AppendAllText(LOG_FILE, BottomLine.Text+"\r\n");
+                _HistoryIndex = _History.Count;
+
                 TopLine.ForeColor         = Color.DarkGray;
                 TopLine.Text              = BottomLine.Text + " =";
                 BottomLine.Text           = result;
@@ -177,6 +201,31 @@ namespace Calculator
             if (BottomLine.ForeColor == Color.Red)
             {
                 BottomLine.ForeColor = Color.Black;
+            }
+        }
+
+        private void BottomLineKeyDown(object sender, KeyEventArgs e)
+        {
+            if (_HistoryIndex != -1)
+            {
+                if (e.KeyCode == Keys.Up)
+                {
+                    if (_HistoryIndex < 1)
+                    {
+                        _HistoryIndex = _History.Count;
+                    }
+
+                    BottomLine.Text = _History[--_HistoryIndex];
+                }
+                else if (e.KeyCode == Keys.Down)
+                {
+                    if (++_HistoryIndex >= _History.Count)
+                    {
+                        _HistoryIndex = 0;
+                    }
+
+                    BottomLine.Text = _History[_HistoryIndex];
+                }
             }
         }
 
@@ -307,8 +356,8 @@ namespace Calculator
                 ulong  invert = (~FromBase(value, _PrevBase)) + (ulong)(op == "-" ? 1 : 0);
                 string result = ToBase(invert & _Mask, _PrevBase);
 
-                TopLine.ForeColor     = Color.DarkGray;
-                TopLine.Text          = op + value + SubScript(_PrevBase) + " = ";
+                TopLine.ForeColor         = Color.DarkGray;
+                TopLine.Text              = op + value + SubScript(_PrevBase) + " = ";
                 BottomLine.Text           = result;
                 BottomLine.SelectionStart = BottomLine.TextLength;
                 BottomLine.Select();
@@ -341,7 +390,7 @@ namespace Calculator
             }
             else
             {
-                _Operation     = Convert.ToString(((Button)sender).Tag);
+                _Operation   = Convert.ToString(((Button)sender).Tag);
                 TopLine.Text = TopLine.Text.Remove(TopLine.Text.Length - 1) + _Operation;
             }
         }

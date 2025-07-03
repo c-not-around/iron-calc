@@ -68,16 +68,16 @@
             this.BottomLine = new System.Windows.Forms.TextBox();
             this.LowLineContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Copy = new System.Windows.Forms.ToolStripMenuItem();
-            this.button74 = new System.Windows.Forms.Button();
-            this.button75 = new System.Windows.Forms.Button();
-            this.button76 = new System.Windows.Forms.Button();
-            this.button77 = new System.Windows.Forms.Button();
-            this.button78 = new System.Windows.Forms.Button();
-            this.button79 = new System.Windows.Forms.Button();
-            this.button80 = new System.Windows.Forms.Button();
-            this.button81 = new System.Windows.Forms.Button();
-            this.button82 = new System.Windows.Forms.Button();
-            this.button83 = new System.Windows.Forms.Button();
+            this.Femto = new System.Windows.Forms.Button();
+            this.Pico = new System.Windows.Forms.Button();
+            this.Nano = new System.Windows.Forms.Button();
+            this.Micro = new System.Windows.Forms.Button();
+            this.Milli = new System.Windows.Forms.Button();
+            this.Kilo = new System.Windows.Forms.Button();
+            this.Mega = new System.Windows.Forms.Button();
+            this.Giga = new System.Windows.Forms.Button();
+            this.Tera = new System.Windows.Forms.Button();
+            this.Peta = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
             this.Delete = new System.Windows.Forms.Button();
             this.Calculate = new System.Windows.Forms.Button();
@@ -154,6 +154,10 @@
             this.SvDigitFive = new System.Windows.Forms.Button();
             this.SvDigitSix = new System.Windows.Forms.Button();
             this.SvDigitSeven = new System.Windows.Forms.Button();
+            this.Kib = new System.Windows.Forms.Button();
+            this.Mib = new System.Windows.Forms.Button();
+            this.Gib = new System.Windows.Forms.Button();
+            this.Tib = new System.Windows.Forms.Button();
             this.LowLineContextMenu.SuspendLayout();
             this.FunctionsBox.SuspendLayout();
             this.Regular.SuspendLayout();
@@ -599,6 +603,7 @@
             this.BottomLine.TabStop = false;
             this.BottomLine.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.BottomLine.TextChanged += new System.EventHandler(this.BottomLineTextChanged);
+            this.BottomLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BottomLineKeyDown);
             this.BottomLine.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BottomLineKeyPress);
             // 
             // LowLineContextMenu
@@ -616,125 +621,125 @@
             this.Copy.Text = "Copy";
             this.Copy.Click += new System.EventHandler(this.CopyClick);
             // 
-            // button74
+            // Femto
             // 
-            this.button74.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button74.Location = new System.Drawing.Point(278, 6);
-            this.button74.Name = "button74";
-            this.button74.Size = new System.Drawing.Size(62, 23);
-            this.button74.TabIndex = 84;
-            this.button74.Tag = "f";
-            this.button74.Text = "f";
-            this.button74.UseVisualStyleBackColor = true;
-            this.button74.Click += new System.EventHandler(this.ButtonsClick);
+            this.Femto.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Femto.Location = new System.Drawing.Point(278, 6);
+            this.Femto.Name = "Femto";
+            this.Femto.Size = new System.Drawing.Size(62, 23);
+            this.Femto.TabIndex = 84;
+            this.Femto.Tag = "f";
+            this.Femto.Text = "f";
+            this.Femto.UseVisualStyleBackColor = true;
+            this.Femto.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // button75
+            // Pico
             // 
-            this.button75.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button75.Location = new System.Drawing.Point(210, 6);
-            this.button75.Name = "button75";
-            this.button75.Size = new System.Drawing.Size(62, 23);
-            this.button75.TabIndex = 83;
-            this.button75.Tag = "p";
-            this.button75.Text = "p";
-            this.button75.UseVisualStyleBackColor = true;
-            this.button75.Click += new System.EventHandler(this.ButtonsClick);
+            this.Pico.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Pico.Location = new System.Drawing.Point(210, 6);
+            this.Pico.Name = "Pico";
+            this.Pico.Size = new System.Drawing.Size(62, 23);
+            this.Pico.TabIndex = 83;
+            this.Pico.Tag = "p";
+            this.Pico.Text = "p";
+            this.Pico.UseVisualStyleBackColor = true;
+            this.Pico.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // button76
+            // Nano
             // 
-            this.button76.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button76.Location = new System.Drawing.Point(142, 6);
-            this.button76.Name = "button76";
-            this.button76.Size = new System.Drawing.Size(62, 23);
-            this.button76.TabIndex = 82;
-            this.button76.Tag = "n";
-            this.button76.Text = "n";
-            this.button76.UseVisualStyleBackColor = true;
-            this.button76.Click += new System.EventHandler(this.ButtonsClick);
+            this.Nano.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Nano.Location = new System.Drawing.Point(142, 6);
+            this.Nano.Name = "Nano";
+            this.Nano.Size = new System.Drawing.Size(62, 23);
+            this.Nano.TabIndex = 82;
+            this.Nano.Tag = "n";
+            this.Nano.Text = "n";
+            this.Nano.UseVisualStyleBackColor = true;
+            this.Nano.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // button77
+            // Micro
             // 
-            this.button77.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button77.Location = new System.Drawing.Point(74, 6);
-            this.button77.Name = "button77";
-            this.button77.Size = new System.Drawing.Size(62, 23);
-            this.button77.TabIndex = 81;
-            this.button77.Tag = "u";
-            this.button77.Text = "u";
-            this.button77.UseVisualStyleBackColor = true;
-            this.button77.Click += new System.EventHandler(this.ButtonsClick);
+            this.Micro.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Micro.Location = new System.Drawing.Point(74, 6);
+            this.Micro.Name = "Micro";
+            this.Micro.Size = new System.Drawing.Size(62, 23);
+            this.Micro.TabIndex = 81;
+            this.Micro.Tag = "u";
+            this.Micro.Text = "u";
+            this.Micro.UseVisualStyleBackColor = true;
+            this.Micro.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // button78
+            // Milli
             // 
-            this.button78.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button78.Location = new System.Drawing.Point(6, 6);
-            this.button78.Name = "button78";
-            this.button78.Size = new System.Drawing.Size(62, 23);
-            this.button78.TabIndex = 80;
-            this.button78.Tag = "m";
-            this.button78.Text = "m";
-            this.button78.UseVisualStyleBackColor = true;
-            this.button78.Click += new System.EventHandler(this.ButtonsClick);
+            this.Milli.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Milli.Location = new System.Drawing.Point(6, 6);
+            this.Milli.Name = "Milli";
+            this.Milli.Size = new System.Drawing.Size(62, 23);
+            this.Milli.TabIndex = 80;
+            this.Milli.Tag = "m";
+            this.Milli.Text = "m";
+            this.Milli.UseVisualStyleBackColor = true;
+            this.Milli.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // button79
+            // Kilo
             // 
-            this.button79.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button79.Location = new System.Drawing.Point(6, 35);
-            this.button79.Name = "button79";
-            this.button79.Size = new System.Drawing.Size(62, 23);
-            this.button79.TabIndex = 79;
-            this.button79.Tag = "k";
-            this.button79.Text = "k";
-            this.button79.UseVisualStyleBackColor = true;
-            this.button79.Click += new System.EventHandler(this.ButtonsClick);
+            this.Kilo.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Kilo.Location = new System.Drawing.Point(6, 35);
+            this.Kilo.Name = "Kilo";
+            this.Kilo.Size = new System.Drawing.Size(62, 23);
+            this.Kilo.TabIndex = 79;
+            this.Kilo.Tag = "k";
+            this.Kilo.Text = "k";
+            this.Kilo.UseVisualStyleBackColor = true;
+            this.Kilo.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // button80
+            // Mega
             // 
-            this.button80.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button80.Location = new System.Drawing.Point(74, 35);
-            this.button80.Name = "button80";
-            this.button80.Size = new System.Drawing.Size(62, 23);
-            this.button80.TabIndex = 78;
-            this.button80.Tag = "M";
-            this.button80.Text = "M";
-            this.button80.UseVisualStyleBackColor = true;
-            this.button80.Click += new System.EventHandler(this.ButtonsClick);
+            this.Mega.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Mega.Location = new System.Drawing.Point(74, 35);
+            this.Mega.Name = "Mega";
+            this.Mega.Size = new System.Drawing.Size(62, 23);
+            this.Mega.TabIndex = 78;
+            this.Mega.Tag = "M";
+            this.Mega.Text = "M";
+            this.Mega.UseVisualStyleBackColor = true;
+            this.Mega.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // button81
+            // Giga
             // 
-            this.button81.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button81.Location = new System.Drawing.Point(142, 35);
-            this.button81.Name = "button81";
-            this.button81.Size = new System.Drawing.Size(62, 23);
-            this.button81.TabIndex = 77;
-            this.button81.Tag = "G";
-            this.button81.Text = "G";
-            this.button81.UseVisualStyleBackColor = true;
-            this.button81.Click += new System.EventHandler(this.ButtonsClick);
+            this.Giga.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Giga.Location = new System.Drawing.Point(142, 35);
+            this.Giga.Name = "Giga";
+            this.Giga.Size = new System.Drawing.Size(62, 23);
+            this.Giga.TabIndex = 77;
+            this.Giga.Tag = "G";
+            this.Giga.Text = "G";
+            this.Giga.UseVisualStyleBackColor = true;
+            this.Giga.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // button82
+            // Tera
             // 
-            this.button82.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button82.Location = new System.Drawing.Point(210, 35);
-            this.button82.Name = "button82";
-            this.button82.Size = new System.Drawing.Size(62, 23);
-            this.button82.TabIndex = 76;
-            this.button82.Tag = "T";
-            this.button82.Text = "T";
-            this.button82.UseVisualStyleBackColor = true;
-            this.button82.Click += new System.EventHandler(this.ButtonsClick);
+            this.Tera.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Tera.Location = new System.Drawing.Point(210, 35);
+            this.Tera.Name = "Tera";
+            this.Tera.Size = new System.Drawing.Size(62, 23);
+            this.Tera.TabIndex = 76;
+            this.Tera.Tag = "T";
+            this.Tera.Text = "T";
+            this.Tera.UseVisualStyleBackColor = true;
+            this.Tera.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // button83
+            // Peta
             // 
-            this.button83.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button83.Location = new System.Drawing.Point(278, 35);
-            this.button83.Name = "button83";
-            this.button83.Size = new System.Drawing.Size(62, 23);
-            this.button83.TabIndex = 75;
-            this.button83.Tag = "P";
-            this.button83.Text = "P";
-            this.button83.UseVisualStyleBackColor = true;
-            this.button83.Click += new System.EventHandler(this.ButtonsClick);
+            this.Peta.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Peta.Location = new System.Drawing.Point(278, 35);
+            this.Peta.Name = "Peta";
+            this.Peta.Size = new System.Drawing.Size(62, 23);
+            this.Peta.TabIndex = 75;
+            this.Peta.Tag = "P";
+            this.Peta.Text = "P";
+            this.Peta.UseVisualStyleBackColor = true;
+            this.Peta.Click += new System.EventHandler(this.ButtonsClick);
             // 
             // Clear
             // 
@@ -1242,18 +1247,22 @@
             // Constants
             // 
             this.Constants.BackColor = System.Drawing.SystemColors.Control;
-            this.Constants.Controls.Add(this.button78);
-            this.Constants.Controls.Add(this.button77);
-            this.Constants.Controls.Add(this.button76);
-            this.Constants.Controls.Add(this.button75);
+            this.Constants.Controls.Add(this.Tib);
+            this.Constants.Controls.Add(this.Gib);
+            this.Constants.Controls.Add(this.Mib);
+            this.Constants.Controls.Add(this.Kib);
+            this.Constants.Controls.Add(this.Milli);
+            this.Constants.Controls.Add(this.Micro);
+            this.Constants.Controls.Add(this.Nano);
+            this.Constants.Controls.Add(this.Pico);
             this.Constants.Controls.Add(this.ConstantE);
             this.Constants.Controls.Add(this.ConstantPi);
-            this.Constants.Controls.Add(this.button74);
-            this.Constants.Controls.Add(this.button83);
-            this.Constants.Controls.Add(this.button82);
-            this.Constants.Controls.Add(this.button81);
-            this.Constants.Controls.Add(this.button80);
-            this.Constants.Controls.Add(this.button79);
+            this.Constants.Controls.Add(this.Femto);
+            this.Constants.Controls.Add(this.Peta);
+            this.Constants.Controls.Add(this.Tera);
+            this.Constants.Controls.Add(this.Giga);
+            this.Constants.Controls.Add(this.Mega);
+            this.Constants.Controls.Add(this.Kilo);
             this.Constants.Location = new System.Drawing.Point(4, 22);
             this.Constants.Name = "Constants";
             this.Constants.Size = new System.Drawing.Size(415, 181);
@@ -1757,6 +1766,54 @@
             this.SvDigitSeven.UseVisualStyleBackColor = true;
             this.SvDigitSeven.Click += new System.EventHandler(this.ButtonsClick);
             // 
+            // Kib
+            // 
+            this.Kib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Kib.Location = new System.Drawing.Point(6, 64);
+            this.Kib.Name = "Kib";
+            this.Kib.Size = new System.Drawing.Size(62, 23);
+            this.Kib.TabIndex = 85;
+            this.Kib.Tag = "kib";
+            this.Kib.Text = "kib";
+            this.Kib.UseVisualStyleBackColor = true;
+            this.Kib.Click += new System.EventHandler(this.ButtonsClick);
+            // 
+            // Mib
+            // 
+            this.Mib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Mib.Location = new System.Drawing.Point(74, 64);
+            this.Mib.Name = "Mib";
+            this.Mib.Size = new System.Drawing.Size(62, 23);
+            this.Mib.TabIndex = 86;
+            this.Mib.Tag = "Mib";
+            this.Mib.Text = "Mib";
+            this.Mib.UseVisualStyleBackColor = true;
+            this.Mib.Click += new System.EventHandler(this.ButtonsClick);
+            // 
+            // Gib
+            // 
+            this.Gib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Gib.Location = new System.Drawing.Point(142, 64);
+            this.Gib.Name = "Gib";
+            this.Gib.Size = new System.Drawing.Size(62, 23);
+            this.Gib.TabIndex = 87;
+            this.Gib.Tag = "Gib";
+            this.Gib.Text = "Gib";
+            this.Gib.UseVisualStyleBackColor = true;
+            this.Gib.Click += new System.EventHandler(this.ButtonsClick);
+            // 
+            // Tib
+            // 
+            this.Tib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Tib.Location = new System.Drawing.Point(210, 64);
+            this.Tib.Name = "Tib";
+            this.Tib.Size = new System.Drawing.Size(62, 23);
+            this.Tib.TabIndex = 88;
+            this.Tib.Tag = "Tib";
+            this.Tib.Text = "Tib";
+            this.Tib.UseVisualStyleBackColor = true;
+            this.Tib.Click += new System.EventHandler(this.ButtonsClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1825,16 +1882,16 @@
         private System.Windows.Forms.Button History;
         private System.Windows.Forms.TextBox TopLine;
         private System.Windows.Forms.TextBox BottomLine;
-        private System.Windows.Forms.Button button74;
-        private System.Windows.Forms.Button button75;
-        private System.Windows.Forms.Button button76;
-        private System.Windows.Forms.Button button77;
-        private System.Windows.Forms.Button button78;
-        private System.Windows.Forms.Button button79;
-        private System.Windows.Forms.Button button80;
-        private System.Windows.Forms.Button button81;
-        private System.Windows.Forms.Button button82;
-        private System.Windows.Forms.Button button83;
+        private System.Windows.Forms.Button Femto;
+        private System.Windows.Forms.Button Pico;
+        private System.Windows.Forms.Button Nano;
+        private System.Windows.Forms.Button Micro;
+        private System.Windows.Forms.Button Milli;
+        private System.Windows.Forms.Button Kilo;
+        private System.Windows.Forms.Button Mega;
+        private System.Windows.Forms.Button Giga;
+        private System.Windows.Forms.Button Tera;
+        private System.Windows.Forms.Button Peta;
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Button Delete;
         private System.Windows.Forms.Button Calculate;
@@ -1913,6 +1970,10 @@
         private System.Windows.Forms.RadioButton WidthDword;
         private System.Windows.Forms.GroupBox SvBaseBox;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button Tib;
+        private System.Windows.Forms.Button Gib;
+        private System.Windows.Forms.Button Mib;
+        private System.Windows.Forms.Button Kib;
     }
 }
 
