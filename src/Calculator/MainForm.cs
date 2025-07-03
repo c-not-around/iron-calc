@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -56,13 +56,12 @@ namespace Calculator
             {
                 MessageBox.Show
                 (
-                    "There are no libraries:\r\n" +
-                    "IronPython.dll\r\n" +
-                    "IronPython.Modules.dll\r\n" +
-                    "Microsoft.Dynamic.dll\r\n" +
-                    "Microsoft.Scripting.dll", "Error", 
-                    MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error
+                    @"There are no libraries:
+					IronPython.dll
+                    IronPython.Modules.dll
+                    Microsoft.Dynamic.dll
+                    Microsoft.Scripting.dll", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
 
                 Application.Exit();
@@ -186,15 +185,9 @@ namespace Calculator
         #endregion
 
         #region Handlers
-        private void TopLineGotFocus(object sender, EventArgs e)
-        {
-            Focus();
-        }
+        private void TopLineGotFocus(object sender, EventArgs e) => Focus();
 
-        private void CopyClick(object sender, EventArgs e)
-        {
-            BottomLine.Copy();
-        }
+        private void CopyClick(object sender, EventArgs e) => BottomLine.Copy();
         
         private void BottomLineTextChanged(object sender, EventArgs e)
         {
@@ -261,15 +254,12 @@ namespace Calculator
             }
         }
 
-        private void CalculateClick(object sender, EventArgs e)
-        {
-            DoCalculate();
-        }
+        private void CalculateClick(object sender, EventArgs e) => DoCalculate();
 
-        private void ButtonsClick(object sender, EventArgs e)
+		private void ButtonsClick(object sender, EventArgs e)
         {
             int    sel = BottomLine.SelectionStart;
-            string exp = ((Button)sender).Tag.ToString();
+            string exp = (sender as Button).Tag.ToString();
             
             BottomLine.Paste(exp);
             BottomLine.SelectionStart = sel + exp.Length;
@@ -287,7 +277,7 @@ namespace Calculator
             }
             else if (sender is RadioButton)
             {
-                NewBase = Convert.ToInt32(((RadioButton)sender).Tag);
+                NewBase = Convert.ToInt32((sender as RadioButton).Tag);
             }
             else if (sender is NumericUpDown)
             {
@@ -336,7 +326,7 @@ namespace Calculator
 
         private void SvWidthChanged(object sender, EventArgs e)
         {
-            int width = Convert.ToInt32(((RadioButton)sender).Tag);
+            int width = Convert.ToInt32((sender as RadioButton).Tag);
             _Mask = (0xFFFFFFFFFFFFFFFF >> (64 - width));
         }
 
@@ -351,7 +341,7 @@ namespace Calculator
 
             if (CheckValue(value))
             {
-                string op = Convert.ToString(((Button)sender).Tag);
+                string op = Convert.ToString((sender as Button).Tag);
 
                 ulong  invert = (~FromBase(value, _PrevBase)) + (ulong)(op == "-" ? 1 : 0);
                 string result = ToBase(invert & _Mask, _PrevBase);
@@ -379,7 +369,7 @@ namespace Calculator
 
                 if (CheckValue(value))
                 {
-                    _Operation = Convert.ToString(((Button)sender).Tag);
+                    _Operation = Convert.ToString((sender as Button).Tag);
                     _Operand   = FromBase(value, _PrevBase);
 
                     TopLine.ForeColor = Color.DarkGray;
@@ -390,7 +380,7 @@ namespace Calculator
             }
             else
             {
-                _Operation   = Convert.ToString(((Button)sender).Tag);
+                _Operation   = Convert.ToString((sender as Button).Tag);
                 TopLine.Text = TopLine.Text.Remove(TopLine.Text.Length - 1) + _Operation;
             }
         }
