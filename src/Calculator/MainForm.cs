@@ -39,33 +39,23 @@ namespace Calculator
             _SvSwitch    = new RadioButton[4]{ SvBin, SvOct, SvDec, SvHex };
             _WidthSwitch = new RadioButton[4]{ WidthByte, WidthWord, WidthDword, WidthQword };
 
-            if (!File.Exists("calc.py"))
-            {
-                File.WriteAllBytes("calc.py", Properties.Resources.calc);
-            }
-            
-            if (File.Exists("IronPython.dll") && File.Exists("IronPython.Modules.dll") && 
-                File.Exists("Microsoft.Dynamic.dll") && File.Exists("Microsoft.Scripting.dll"))
-            {
-                ScriptEngine Script = Python.CreateEngine();
-                ScriptScope  Scope  = Script.CreateScope();
-                Script.ExecuteFile("calc.py", Scope);
-                _Calculate          = Scope.GetVariable("calculate");
-            }
-            else
-            {
-                MessageBox.Show
-                (
-                    @"There are no libraries:
-					IronPython.dll
-                    IronPython.Modules.dll
-                    Microsoft.Dynamic.dll
-                    Microsoft.Scripting.dll", "Error", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error
-                );
+			try
+			{
+				ScriptEngine Script = Python.CreateEngine();
+				ScriptScope  Scope  = Script.CreateScope();
+				Script.ExecuteFile("calc.py", Scope);
+				_Calculate          = Scope.GetVariable("calculate");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show
+		        (
+					"Load file \"calc.py\" error:\r\n"+ex.Message, "Error", 
+					MessageBoxButtons.OK, MessageBoxIcon.Error
+			    );
 
-                Application.Exit();
-            }
+				Environment.Exit(-1);
+			}
 
             if (File.Exists(LOG_FILE))
             {
@@ -118,7 +108,7 @@ namespace Calculator
                 _HistoryIndex = _History.Count;
 
                 TopLine.ForeColor         = Color.DarkGray;
-                TopLine.Text              = BottomLine.Text + " =";
+                TopLine.Text              = BottomLine.Text+" =";
                 BottomLine.Text           = result;
                 BottomLine.SelectionStart = BottomLine.TextLength;
                 BottomLine.Select();
@@ -175,7 +165,7 @@ namespace Calculator
                     BottomLine.SelectionStart  = i;
                     BottomLine.SelectionLength = 1;
                     BottomLine.Select();
-					
+                    
                     return false;
                 }
             }
@@ -256,7 +246,7 @@ namespace Calculator
 
         private void CalculateClick(object sender, EventArgs e) => DoCalculate();
 
-		private void ButtonsClick(object sender, EventArgs e)
+        private void ButtonsClick(object sender, EventArgs e)
         {
             int    sel = BottomLine.SelectionStart;
             string exp = (sender as Button).Tag.ToString();
