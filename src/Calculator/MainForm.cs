@@ -32,9 +32,13 @@ namespace Calculator
         {
             InitializeComponent();
 
+            GotFocus                      += FocusRedirect;
+            ModesBox.GotFocus             += FocusRedirect;
+            ModesBox.SelectedIndexChanged += FocusRedirect;
+            TopLine.GotFocus              += FocusRedirect;
+
             TopLine.ContextMenuStrip = new ContextMenuStrip();
             TopLine.Cursor           = Cursors.Default;
-            TopLine.GotFocus        += TopLineGotFocus;
 
             _SvSwitch    = new RadioButton[4]{ SvBin, SvOct, SvDec, SvHex };
             _WidthSwitch = new RadioButton[4]{ WidthByte, WidthWord, WidthDword, WidthQword };
@@ -81,7 +85,7 @@ namespace Calculator
         }
         #endregion
 
-        #region Utils
+        #region Routines
         private void DoCalculate()
         {
             string expression = BottomLine.Text;
@@ -111,8 +115,9 @@ namespace Calculator
                 TopLine.Text              = BottomLine.Text+" =";
                 BottomLine.Text           = result;
                 BottomLine.SelectionStart = BottomLine.TextLength;
-                BottomLine.Select();
             }
+
+            BottomLine.Select();
         }
 
         private ulong FromBase(string image, int basis)
@@ -175,10 +180,12 @@ namespace Calculator
         #endregion
 
         #region Handlers
-        private void TopLineGotFocus(object sender, EventArgs e) => Focus();
+        private void FocusRedirect(object sende, EventArgs e) => BottomLine.Select();
 
         private void CopyClick(object sender, EventArgs e) => BottomLine.Copy();
-        
+
+        private void PasteClick(object sender, EventArgs e) => BottomLine.Paste();
+
         private void BottomLineTextChanged(object sender, EventArgs e)
         {
             if (BottomLine.ForeColor == Color.Red)
@@ -214,7 +221,7 @@ namespace Calculator
 
         private void BottomLineKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (FunctionsBox.SelectedIndex != 3 && e.KeyChar == '\r')
+            if (ModesBox.SelectedIndex != 3 && e.KeyChar == '\r')
             {
                 DoCalculate();
             }
@@ -224,6 +231,7 @@ namespace Calculator
         {
             BottomLine.Text = "";
             TopLine.Text    = "";
+            BottomLine.Select();
         }
 
         private void DeleteClick(object sender, EventArgs e)
@@ -237,11 +245,12 @@ namespace Calculator
 
                 if (sel > 0)
                 {
-                    BottomLine.Text = text.Remove(sel - 1, 1);
+                    BottomLine.Text           = text.Remove(sel - 1, 1);
                     BottomLine.SelectionStart = sel - 1;
-                    BottomLine.Select();
                 }
             }
+
+            BottomLine.Select();
         }
 
         private void CalculateClick(object sender, EventArgs e) => DoCalculate();
@@ -312,12 +321,16 @@ namespace Calculator
 
                 _PrevBase = NewBase;
             }
+
+            BottomLine.Select();
         }
 
         private void SvWidthChanged(object sender, EventArgs e)
         {
             int width = Convert.ToInt32((sender as RadioButton).Tag);
             _Mask = (0xFFFFFFFFFFFFFFFF >> (64 - width));
+
+            BottomLine.Select();
         }
 
         private void SvInvClick(object sender, EventArgs e)
@@ -373,42 +386,43 @@ namespace Calculator
                 _Operation   = Convert.ToString((sender as Button).Tag);
                 TopLine.Text = TopLine.Text.Remove(TopLine.Text.Length - 1) + _Operation;
             }
+
+            BottomLine.Select();
         }
 
         private void SvCalculateClick(object sender, EventArgs e)
         {
-            if (_Operation == "")
+            if (_Operation != "")
             {
-                return;
-            }
+                string value = BottomLine.Text;
 
-            string value = BottomLine.Text;
-
-            if (value.Length == 0)
-            {
-                value = "0";
-            }
-
-            if (CheckValue(value))
-            {
-                ulong result = FromBase(value, _PrevBase);
-
-                TopLine.ForeColor = Color.DarkGray;
-                TopLine.Text     += " " + value + SubScript(_PrevBase) + " =";
-
-                switch (_Operation)
+                if (value.Length == 0)
                 {
-                    case "|": result |= _Operand; break;
-                    case "^": result ^= _Operand; break;
-                    case "&": result &= _Operand; break;
+                    value = "0";
                 }
 
-                BottomLine.Text           = ToBase(result & _Mask, _PrevBase);
-                BottomLine.SelectionStart = BottomLine.TextLength;
-                BottomLine.Select();
+                if (CheckValue(value))
+                {
+                    ulong result = FromBase(value, _PrevBase);
 
-                _Operation = "";
+                    TopLine.ForeColor = Color.DarkGray;
+                    TopLine.Text += " " + value + SubScript(_PrevBase) + " =";
+
+                    switch (_Operation)
+                    {
+                        case "|": result |= _Operand; break;
+                        case "^": result ^= _Operand; break;
+                        case "&": result &= _Operand; break;
+                    }
+
+                    BottomLine.Text = ToBase(result & _Mask, _PrevBase);
+                    BottomLine.SelectionStart = BottomLine.TextLength;
+
+                    _Operation = "";
+                }
             }
+
+            BottomLine.Select();
         }
         #endregion
     }

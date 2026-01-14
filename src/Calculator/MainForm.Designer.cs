@@ -82,7 +82,7 @@
             this.Delete = new System.Windows.Forms.Button();
             this.Calculate = new System.Windows.Forms.Button();
             this.Decponent = new System.Windows.Forms.Button();
-            this.FunctionsBox = new System.Windows.Forms.TabControl();
+            this.ModesBox = new System.Windows.Forms.TabControl();
             this.Regular = new System.Windows.Forms.TabPage();
             this.Trigonometry = new System.Windows.Forms.TabPage();
             this.GrdToDeg = new System.Windows.Forms.Button();
@@ -116,8 +116,12 @@
             this.FuncCosec = new System.Windows.Forms.Button();
             this.FuncSin = new System.Windows.Forms.Button();
             this.Constants = new System.Windows.Forms.TabPage();
-            this.SysVal = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Tib = new System.Windows.Forms.Button();
+            this.Gib = new System.Windows.Forms.Button();
+            this.Mib = new System.Windows.Forms.Button();
+            this.Kib = new System.Windows.Forms.Button();
+            this.SystemValue = new System.Windows.Forms.TabPage();
+            this.WidthContainer = new System.Windows.Forms.Panel();
             this.WidthQword = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.WidthDword = new System.Windows.Forms.RadioButton();
@@ -154,17 +158,14 @@
             this.SvDigitFive = new System.Windows.Forms.Button();
             this.SvDigitSix = new System.Windows.Forms.Button();
             this.SvDigitSeven = new System.Windows.Forms.Button();
-            this.Kib = new System.Windows.Forms.Button();
-            this.Mib = new System.Windows.Forms.Button();
-            this.Gib = new System.Windows.Forms.Button();
-            this.Tib = new System.Windows.Forms.Button();
+            this.Paste = new System.Windows.Forms.ToolStripMenuItem();
             this.LowLineContextMenu.SuspendLayout();
-            this.FunctionsBox.SuspendLayout();
+            this.ModesBox.SuspendLayout();
             this.Regular.SuspendLayout();
             this.Trigonometry.SuspendLayout();
             this.Constants.SuspendLayout();
-            this.SysVal.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.SystemValue.SuspendLayout();
+            this.WidthContainer.SuspendLayout();
             this.SvBaseBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArbitraryBaseValue)).BeginInit();
             this.SuspendLayout();
@@ -609,13 +610,14 @@
             // LowLineContextMenu
             // 
             this.LowLineContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Copy});
+            this.Copy,
+            this.Paste});
             this.LowLineContextMenu.Name = "LowLineContextMenu";
-            this.LowLineContextMenu.Size = new System.Drawing.Size(103, 26);
+            this.LowLineContextMenu.Size = new System.Drawing.Size(103, 48);
             // 
             // Copy
             // 
-            this.Copy.Image = global::Calculator.Properties.Resources.Copy;
+            this.Copy.Image = global::Calculator.Properties.Resources.copy;
             this.Copy.Name = "Copy";
             this.Copy.Size = new System.Drawing.Size(102, 22);
             this.Copy.Text = "Copy";
@@ -786,17 +788,17 @@
             this.Decponent.UseVisualStyleBackColor = true;
             this.Decponent.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // FunctionsBox
+            // ModesBox
             // 
-            this.FunctionsBox.Controls.Add(this.Regular);
-            this.FunctionsBox.Controls.Add(this.Trigonometry);
-            this.FunctionsBox.Controls.Add(this.Constants);
-            this.FunctionsBox.Controls.Add(this.SysVal);
-            this.FunctionsBox.Location = new System.Drawing.Point(11, 50);
-            this.FunctionsBox.Name = "FunctionsBox";
-            this.FunctionsBox.SelectedIndex = 0;
-            this.FunctionsBox.Size = new System.Drawing.Size(423, 207);
-            this.FunctionsBox.TabIndex = 93;
+            this.ModesBox.Controls.Add(this.Regular);
+            this.ModesBox.Controls.Add(this.Trigonometry);
+            this.ModesBox.Controls.Add(this.Constants);
+            this.ModesBox.Controls.Add(this.SystemValue);
+            this.ModesBox.Location = new System.Drawing.Point(11, 50);
+            this.ModesBox.Name = "ModesBox";
+            this.ModesBox.SelectedIndex = 0;
+            this.ModesBox.Size = new System.Drawing.Size(423, 207);
+            this.ModesBox.TabIndex = 93;
             // 
             // Regular
             // 
@@ -1269,54 +1271,102 @@
             this.Constants.TabIndex = 2;
             this.Constants.Text = "Constants";
             // 
-            // SysVal
+            // Tib
             // 
-            this.SysVal.BackColor = System.Drawing.SystemColors.Control;
-            this.SysVal.Controls.Add(this.panel1);
-            this.SysVal.Controls.Add(this.SvBaseBox);
-            this.SysVal.Controls.Add(this.InvertSign);
-            this.SysVal.Controls.Add(this.BitwiseNot);
-            this.SysVal.Controls.Add(this.ArbitraryBaseValue);
-            this.SysVal.Controls.Add(this.ArbitraryBaseSelect);
-            this.SysVal.Controls.Add(this.BitwiseAnd);
-            this.SysVal.Controls.Add(this.button2);
-            this.SysVal.Controls.Add(this.BitwiseOr);
-            this.SysVal.Controls.Add(this.BitwiseXor);
-            this.SysVal.Controls.Add(this.SvDigitA);
-            this.SysVal.Controls.Add(this.SvDigitB);
-            this.SysVal.Controls.Add(this.SvDigitC);
-            this.SysVal.Controls.Add(this.SvDigitD);
-            this.SysVal.Controls.Add(this.SvDigitE);
-            this.SysVal.Controls.Add(this.SvDigitF);
-            this.SysVal.Controls.Add(this.SvDigitZero);
-            this.SysVal.Controls.Add(this.SvDigitOne);
-            this.SysVal.Controls.Add(this.SvDigitTwo);
-            this.SysVal.Controls.Add(this.SvDelete);
-            this.SysVal.Controls.Add(this.SvDigitNine);
-            this.SysVal.Controls.Add(this.SvDigitThree);
-            this.SysVal.Controls.Add(this.SvDigitEight);
-            this.SysVal.Controls.Add(this.SvClear);
-            this.SysVal.Controls.Add(this.SvDigitFour);
-            this.SysVal.Controls.Add(this.SvDigitFive);
-            this.SysVal.Controls.Add(this.SvDigitSix);
-            this.SysVal.Controls.Add(this.SvDigitSeven);
-            this.SysVal.Location = new System.Drawing.Point(4, 22);
-            this.SysVal.Name = "SysVal";
-            this.SysVal.Size = new System.Drawing.Size(415, 181);
-            this.SysVal.TabIndex = 3;
-            this.SysVal.Text = "SystemValue";
+            this.Tib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Tib.Location = new System.Drawing.Point(210, 64);
+            this.Tib.Name = "Tib";
+            this.Tib.Size = new System.Drawing.Size(62, 23);
+            this.Tib.TabIndex = 88;
+            this.Tib.Tag = "Tib";
+            this.Tib.Text = "Tib";
+            this.Tib.UseVisualStyleBackColor = true;
+            this.Tib.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // panel1
+            // Gib
             // 
-            this.panel1.Controls.Add(this.WidthQword);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.WidthDword);
-            this.panel1.Controls.Add(this.WidthByte);
-            this.panel1.Controls.Add(this.WidthWord);
-            this.panel1.Location = new System.Drawing.Point(6, 147);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(334, 34);
-            this.panel1.TabIndex = 118;
+            this.Gib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Gib.Location = new System.Drawing.Point(142, 64);
+            this.Gib.Name = "Gib";
+            this.Gib.Size = new System.Drawing.Size(62, 23);
+            this.Gib.TabIndex = 87;
+            this.Gib.Tag = "Gib";
+            this.Gib.Text = "Gib";
+            this.Gib.UseVisualStyleBackColor = true;
+            this.Gib.Click += new System.EventHandler(this.ButtonsClick);
+            // 
+            // Mib
+            // 
+            this.Mib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Mib.Location = new System.Drawing.Point(74, 64);
+            this.Mib.Name = "Mib";
+            this.Mib.Size = new System.Drawing.Size(62, 23);
+            this.Mib.TabIndex = 86;
+            this.Mib.Tag = "Mib";
+            this.Mib.Text = "Mib";
+            this.Mib.UseVisualStyleBackColor = true;
+            this.Mib.Click += new System.EventHandler(this.ButtonsClick);
+            // 
+            // Kib
+            // 
+            this.Kib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Kib.Location = new System.Drawing.Point(6, 64);
+            this.Kib.Name = "Kib";
+            this.Kib.Size = new System.Drawing.Size(62, 23);
+            this.Kib.TabIndex = 85;
+            this.Kib.Tag = "kib";
+            this.Kib.Text = "kib";
+            this.Kib.UseVisualStyleBackColor = true;
+            this.Kib.Click += new System.EventHandler(this.ButtonsClick);
+            // 
+            // SystemValue
+            // 
+            this.SystemValue.BackColor = System.Drawing.SystemColors.Control;
+            this.SystemValue.Controls.Add(this.WidthContainer);
+            this.SystemValue.Controls.Add(this.SvBaseBox);
+            this.SystemValue.Controls.Add(this.InvertSign);
+            this.SystemValue.Controls.Add(this.BitwiseNot);
+            this.SystemValue.Controls.Add(this.ArbitraryBaseValue);
+            this.SystemValue.Controls.Add(this.ArbitraryBaseSelect);
+            this.SystemValue.Controls.Add(this.BitwiseAnd);
+            this.SystemValue.Controls.Add(this.button2);
+            this.SystemValue.Controls.Add(this.BitwiseOr);
+            this.SystemValue.Controls.Add(this.BitwiseXor);
+            this.SystemValue.Controls.Add(this.SvDigitA);
+            this.SystemValue.Controls.Add(this.SvDigitB);
+            this.SystemValue.Controls.Add(this.SvDigitC);
+            this.SystemValue.Controls.Add(this.SvDigitD);
+            this.SystemValue.Controls.Add(this.SvDigitE);
+            this.SystemValue.Controls.Add(this.SvDigitF);
+            this.SystemValue.Controls.Add(this.SvDigitZero);
+            this.SystemValue.Controls.Add(this.SvDigitOne);
+            this.SystemValue.Controls.Add(this.SvDigitTwo);
+            this.SystemValue.Controls.Add(this.SvDelete);
+            this.SystemValue.Controls.Add(this.SvDigitNine);
+            this.SystemValue.Controls.Add(this.SvDigitThree);
+            this.SystemValue.Controls.Add(this.SvDigitEight);
+            this.SystemValue.Controls.Add(this.SvClear);
+            this.SystemValue.Controls.Add(this.SvDigitFour);
+            this.SystemValue.Controls.Add(this.SvDigitFive);
+            this.SystemValue.Controls.Add(this.SvDigitSix);
+            this.SystemValue.Controls.Add(this.SvDigitSeven);
+            this.SystemValue.Location = new System.Drawing.Point(4, 22);
+            this.SystemValue.Name = "SystemValue";
+            this.SystemValue.Size = new System.Drawing.Size(415, 181);
+            this.SystemValue.TabIndex = 3;
+            this.SystemValue.Text = "SystemValue";
+            // 
+            // WidthContainer
+            // 
+            this.WidthContainer.Controls.Add(this.WidthQword);
+            this.WidthContainer.Controls.Add(this.label1);
+            this.WidthContainer.Controls.Add(this.WidthDword);
+            this.WidthContainer.Controls.Add(this.WidthByte);
+            this.WidthContainer.Controls.Add(this.WidthWord);
+            this.WidthContainer.Location = new System.Drawing.Point(6, 147);
+            this.WidthContainer.Name = "WidthContainer";
+            this.WidthContainer.Size = new System.Drawing.Size(334, 34);
+            this.WidthContainer.TabIndex = 118;
             // 
             // WidthQword
             // 
@@ -1766,60 +1816,20 @@
             this.SvDigitSeven.UseVisualStyleBackColor = true;
             this.SvDigitSeven.Click += new System.EventHandler(this.ButtonsClick);
             // 
-            // Kib
+            // Paste
             // 
-            this.Kib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Kib.Location = new System.Drawing.Point(6, 64);
-            this.Kib.Name = "Kib";
-            this.Kib.Size = new System.Drawing.Size(62, 23);
-            this.Kib.TabIndex = 85;
-            this.Kib.Tag = "kib";
-            this.Kib.Text = "kib";
-            this.Kib.UseVisualStyleBackColor = true;
-            this.Kib.Click += new System.EventHandler(this.ButtonsClick);
-            // 
-            // Mib
-            // 
-            this.Mib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Mib.Location = new System.Drawing.Point(74, 64);
-            this.Mib.Name = "Mib";
-            this.Mib.Size = new System.Drawing.Size(62, 23);
-            this.Mib.TabIndex = 86;
-            this.Mib.Tag = "Mib";
-            this.Mib.Text = "Mib";
-            this.Mib.UseVisualStyleBackColor = true;
-            this.Mib.Click += new System.EventHandler(this.ButtonsClick);
-            // 
-            // Gib
-            // 
-            this.Gib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Gib.Location = new System.Drawing.Point(142, 64);
-            this.Gib.Name = "Gib";
-            this.Gib.Size = new System.Drawing.Size(62, 23);
-            this.Gib.TabIndex = 87;
-            this.Gib.Tag = "Gib";
-            this.Gib.Text = "Gib";
-            this.Gib.UseVisualStyleBackColor = true;
-            this.Gib.Click += new System.EventHandler(this.ButtonsClick);
-            // 
-            // Tib
-            // 
-            this.Tib.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Tib.Location = new System.Drawing.Point(210, 64);
-            this.Tib.Name = "Tib";
-            this.Tib.Size = new System.Drawing.Size(62, 23);
-            this.Tib.TabIndex = 88;
-            this.Tib.Tag = "Tib";
-            this.Tib.Text = "Tib";
-            this.Tib.UseVisualStyleBackColor = true;
-            this.Tib.Click += new System.EventHandler(this.ButtonsClick);
+            this.Paste.Image = global::Calculator.Properties.Resources.paste;
+            this.Paste.Name = "Paste";
+            this.Paste.Size = new System.Drawing.Size(102, 22);
+            this.Paste.Text = "Paste";
+            this.Paste.Click += new System.EventHandler(this.PasteClick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(444, 265);
-            this.Controls.Add(this.FunctionsBox);
+            this.Controls.Add(this.ModesBox);
             this.Controls.Add(this.BottomLine);
             this.Controls.Add(this.TopLine);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -1829,14 +1839,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IronCalc";
             this.LowLineContextMenu.ResumeLayout(false);
-            this.FunctionsBox.ResumeLayout(false);
+            this.ModesBox.ResumeLayout(false);
             this.Regular.ResumeLayout(false);
             this.Trigonometry.ResumeLayout(false);
             this.Constants.ResumeLayout(false);
-            this.SysVal.ResumeLayout(false);
-            this.SysVal.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.SystemValue.ResumeLayout(false);
+            this.SystemValue.PerformLayout();
+            this.WidthContainer.ResumeLayout(false);
+            this.WidthContainer.PerformLayout();
             this.SvBaseBox.ResumeLayout(false);
             this.SvBaseBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArbitraryBaseValue)).EndInit();
@@ -1898,7 +1908,7 @@
         private System.Windows.Forms.ContextMenuStrip LowLineContextMenu;
         private System.Windows.Forms.ToolStripMenuItem Copy;
         private System.Windows.Forms.Button Decponent;
-        private System.Windows.Forms.TabControl FunctionsBox;
+        private System.Windows.Forms.TabControl ModesBox;
         private System.Windows.Forms.TabPage Regular;
         private System.Windows.Forms.TabPage Trigonometry;
         private System.Windows.Forms.TabPage Constants;
@@ -1932,7 +1942,7 @@
         private System.Windows.Forms.Button DegToGrd;
         private System.Windows.Forms.Button DegToRad;
         private System.Windows.Forms.Button RadToGrd;
-        private System.Windows.Forms.TabPage SysVal;
+        private System.Windows.Forms.TabPage SystemValue;
         private System.Windows.Forms.Button SvDigitA;
         private System.Windows.Forms.Button SvDigitB;
         private System.Windows.Forms.Button SvDigitC;
@@ -1969,11 +1979,12 @@
         private System.Windows.Forms.RadioButton WidthQword;
         private System.Windows.Forms.RadioButton WidthDword;
         private System.Windows.Forms.GroupBox SvBaseBox;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel WidthContainer;
         private System.Windows.Forms.Button Tib;
         private System.Windows.Forms.Button Gib;
         private System.Windows.Forms.Button Mib;
         private System.Windows.Forms.Button Kib;
+        private System.Windows.Forms.ToolStripMenuItem Paste;
     }
 }
 
